@@ -6,20 +6,42 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavBar() {
+	const linkClass = 'text-decoration-none text-reset';
+
 	return (
 		<div>
 			<Navbar bg="light" expand="lg" sticky="top">
 				<Container>
-					<Navbar.Brand>Art of Counting</Navbar.Brand>
+					<Navbar.Brand>
+						<Link className={linkClass} to="/Homepage">
+							Art of Counting
+						</Link>
+					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="me-auto">
-							<Nav.Link>
-								<Link to="/Homepage">Home</Link>
-							</Nav.Link>
-							<Nav.Link>
-								<Link to="/Games">Games</Link>
-							</Nav.Link>
+						<Nav variant="tabs" defaultActiveKey="link-1">
+							<Nav.Item>
+								<Nav.Link eventKey="link-1" as={'div'}>
+									<Link className={linkClass} to="/Homepage">
+										Home
+									</Link>
+								</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link eventKey="link-2" as={'div'}>
+									<Link className={linkClass} to="/Games">
+										Games
+									</Link>
+								</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link eventKey="link-3" disabled as={'div'}>
+									<Link className={linkClass} to="/Interactive">
+										Interactive
+									</Link>
+								</Nav.Link>
+							</Nav.Item>
+
 							{/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
 								<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
 								<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
