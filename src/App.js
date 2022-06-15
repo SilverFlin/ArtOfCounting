@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 
+import Game from './Game/Game';
+import Homepage from './About/Homepage';
+
+import NavBar from './UI/NavBar';
+import Footer from './UI/Footer';
+
 function App() {
 	return (
 		<div>
-			<h1>Art of Counting - Game</h1>
+			<NavBar />
+			<Game />
+			<Homepage />
+			<Footer fixed="bottom" />
 		</div>
 	);
 }
