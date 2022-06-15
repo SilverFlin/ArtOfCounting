@@ -12,24 +12,20 @@ function NavBar() {
 		<div>
 			<Navbar bg="light" expand="lg" sticky="top">
 				<Container>
-					<Navbar.Brand>
-						<Link className={linkClass} to="/Homepage">
-							Art of Counting
-						</Link>
-					</Navbar.Brand>
+					<Navbar.Brand>Art of Counting</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav variant="tabs" defaultActiveKey="link-1">
 							<Nav.Item>
 								<Nav.Link eventKey="link-1" as={'div'}>
-									<Link className={linkClass} to="/Homepage">
+									<Link className={linkClass} to="/home">
 										Home
 									</Link>
 								</Nav.Link>
 							</Nav.Item>
 							<Nav.Item>
 								<Nav.Link eventKey="link-2" as={'div'}>
-									<Link className={linkClass} to="/Games">
+									<Link className={linkClass} to="/games">
 										Games
 									</Link>
 								</Nav.Link>
