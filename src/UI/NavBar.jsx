@@ -11,53 +11,46 @@ function NavBar() {
 	const linkClass = 'text-decoration-none text-reset';
 
 	return (
-		<div>
-			<Navbar bg="dark" expand="lg" sticky="top">
-				<Container>
-					<Row>
-						<Col>
-							<Navbar.Toggle aria-controls="basic-navbar-nav" />
-							<Navbar.Collapse id="basic-navbar-nav">
-								<Nav justify variant="pills" defaultActiveKey="link-1">
-									<Nav.Item>
-										<Nav.Link className="text-white" eventKey="link-1" as={'div'}>
-											<Link className={linkClass} to="/home">
-												Home
-											</Link>
-										</Nav.Link>
-									</Nav.Item>
-									<Nav.Item>
-										<Nav.Link className="text-white" eventKey="link-2" as={'div'}>
-											<Link className={linkClass} to="/games">
-												Games
-											</Link>
-										</Nav.Link>
-									</Nav.Item>
-									<Nav.Item>
-										<Nav.Link eventKey="link-3" disabled as={'div'}>
-											<Link className={linkClass} to="/Interactive">
-												Interactive
-											</Link>
-										</Nav.Link>
-									</Nav.Item>
-									{/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+		<Navbar bg="dark" fixed="top" expand="lg">
+			<Container>
+				<Navbar.Brand className="text-white">Art of Counting</Navbar.Brand>
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
+				<Navbar.Collapse id="basic-navbar-nav">
+					<Nav justify variant="pills" defaultActiveKey="link-1">
+						<Navbar.Collapse id="basic-navbar-nav">
+							<Nav.Item>
+								<Nav.Link className="text-white" eventKey="link-1" as={'div'}>
+									<Link className={linkClass} to="/home">
+										Home
+									</Link>
+								</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link className="text-white" eventKey="link-2" as={'div'}>
+									<Link className={linkClass} to="/games">
+										Games
+									</Link>
+								</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link eventKey="link-3" disabled as={'div'}>
+									<Link className={linkClass} to="/Interactive">
+										Interactive
+									</Link>
+								</Nav.Link>
+							</Nav.Item>
+							{/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
 								<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
 								<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
 								<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
 							</NavDropdown> */}
-								</Nav>
-							</Navbar.Collapse>
-						</Col>
-						<Col style={{ width: '30rem' }}>
-							<Navbar.Brand className="text-white">Art of Counting</Navbar.Brand>
-						</Col>
-					</Row>
-				</Container>
-			</Navbar>
-			<br />
-		</div>
+						</Navbar.Collapse>
+					</Nav>
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
 	);
 }
 
