@@ -9,7 +9,7 @@ const GameCard = (props) => {
 	return (
 		<Col>
 			<Card>
-				<Card.Img className="imgGame" variant="top" src={props.src || logo} />
+				<Card.Img loop="infinite" className="imgGame" variant="top" src={props.src || logo} />
 				<Card.Body>
 					<Card.Title>{props.title}</Card.Title>
 					<Card.Text>{props.description}</Card.Text>
