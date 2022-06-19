@@ -10,32 +10,42 @@ import Badge from 'react-bootstrap/Badge';
 import '../Styles/styles.css';
 
 const Fastrithmetic = () => {
-	const resultCalc = (firstOp, operation, secondOp) => {
-		//random
-		console.log(firstOp, operation, secondOp);
-		return 123;
-	};
+	class Operation {
+		constructor(first, second, operation) {
+			// need to be randomized
+			this.firstOperation = first || 5;
+			this.secondOperation = second || 3;
+			this.operationType = operation || '-';
+			this.result = this.calcResult();
+		}
+		calcResult() {
+			return this.firstOperation - this.secondOperation;
+		}
+	}
+
+	// const resultCalc = (firstOp, operation, secondOp) => {
+	// 	//random
+	// 	console.log(firstOp, operation, secondOp);
+	// 	return 123;
+	// };
 	const [ responseValue, setResponseValue ] = useState('');
-	const [ currentOperation, setCurrentOperation ] = useState({
-		firstOp: 1,
-		operation: 'Addition',
-		secondOp: 1,
-		result: 123
-	});
+	const [ currentOperation, setCurrentOperation ] = useState(new Operation());
+	const [ currentInput, setCurrentInput ] = useState('');
 	//resultCalc(this.firstOp, this.operation, this.secondOp)
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		console.log(responseValue, currentOperation);
+	};
 
 	const answerHandler = (evt) => {
 		setResponseValue(evt.target.value);
-		if (parseInt(responseValue) === currentOperation.result) {
-			//repsonseValue only numb
-			console.log(currentOperation);
-			setCurrentOperation({
-				firstOp: 2, // random floor
-				operation: 'Substraction', // random array 1-3
-				secondOp: 1, // random floor
-				result: 321
-			});
+		console.log(evt.target.value);
+		console.log(responseValue);
+		if (parseInt(evt.target.value) === currentOperation.result) {
+			setCurrentOperation(new Operation(Math.floor(Math.random() * 100), Math.floor(Math.random() * 100), '-'));
 		}
+		setResponseValue(evt.target.value);
 	};
 
 	return (
@@ -51,16 +61,13 @@ const Fastrithmetic = () => {
 
 				<GameContainer>
 					<Container style={{ display: 'flex', marginBottom: '6m' }}>
-						<Form.Group className="mb-3" controlId="formBasicEmail">
-							<Form.Label>Answer</Form.Label>
-							<Form.Control
-								// onKeyUp={(this.value = this.value.replace(/[^\d]/, ''))}
-								onKeyDownCapture={answerHandler}
-								type="text"
-								placeholder="Answer"
-								defaultValue={''}
-							/>
-						</Form.Group>
+						<Form onSubmit={submitHandler}>
+							<Form.Label>
+								{`${currentOperation.firstOperation} ${currentOperation.operationType} ${currentOperation.secondOperation}`}
+							</Form.Label>
+
+							<Form.Control onChange={answerHandler} type="text" value={responseValue} />
+						</Form>
 					</Container>
 				</GameContainer>
 			</Container>
