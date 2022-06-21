@@ -1,24 +1,35 @@
-import GameContainer from '../Games/GameContainer';
-import BackLink from '../UI/BackLink';
+//React
+import React, { useState } from 'react';
 
+// React external libraries
 import useSound from 'use-sound';
-import React, { useState, useRef } from 'react';
-import Form from 'react-bootstrap/Form';
 
 import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
+import Form from 'react-bootstrap/Form';
 
+// Components
+import GameContainer from '../Games/GameContainer';
+import BackLink from '../UI/BackLink';
+
+// Resources
 import clickSfx from '../Sounds/clickSfx.mp3';
+
+//Styles
 import '../Styles/styles.css';
 
 const Fastrithmetic = () => {
+	//Effects
 	const [ playSfx ] = useSound(clickSfx, { volume: 0.5 });
+
+	//useState
+	const [ responseValue, setResponseValue ] = useState('');
+	const [ currentOperation, setCurrentOperation ] = useState(new Operation());
+
+	//Operaiton Logic
 	const operations = [ '+', '-', 'x', '/' ];
-	// const audioPlayer = useRef(null);
-	// const pointsSound = new Audio('../Sounds/notif.mp3');
 	class Operation {
 		constructor(first, second, operation) {
-			// need to be randomized
 			this.firstOperation = Math.floor(Math.random() * 100);
 			this.secondOperation = Math.floor(Math.random() * 100);
 			this.operationType = operations[Math.floor(Math.random() * 4)];
@@ -46,39 +57,18 @@ const Fastrithmetic = () => {
 		}
 	}
 
-	// const resultCalc = (firstOp, operation, secondOp) => {
-	// 	//random
-	// 	console.log(firstOp, operation, secondOp);
-	// 	return 123;
-	// };
-	const [ responseValue, setResponseValue ] = useState('');
-	const [ currentOperation, setCurrentOperation ] = useState(new Operation());
-	const [ currentInput, setCurrentInput ] = useState('');
-
-	// const [ notifSound, setNotifSound ] = useEffect('');
-	//resultCalc(this.firstOp, this.operation, this.secondOp)
-
-	// const submitHandler = (e) => {
-	// 	e.preventDefault();
-	// 	console.log(responseValue, currentOperation);
-	// };
-
+	// Check input each key press to validate answer
 	const answerHandler = (evt) => {
 		setResponseValue(evt.target.value);
 		console.log(currentOperation.result);
-
 		if (parseInt(evt.target.value) === currentOperation.result) {
 			setCurrentOperation(new Operation());
 			setResponseValue('');
 			playSfx();
-			// audioPlayer.current.play();
 		}
 	};
 
-	// const playAudio = () => {
-	// 	audioPlayer.current.play();
-	// };
-
+	// Result
 	return (
 		<main>
 			<Container>
@@ -96,8 +86,6 @@ const Fastrithmetic = () => {
 							{`${currentOperation.firstOperation} ${currentOperation.operationType} ${currentOperation.secondOperation}`}
 						</Form.Label>
 						<Form.Control onChange={answerHandler} type="text" value={responseValue} />
-						{/* <button onClick={playAudio} /> */}
-						{/* <audio controls ref={audioPlayer} src={notif} /> */}
 					</Container>
 				</GameContainer>
 			</Container>
